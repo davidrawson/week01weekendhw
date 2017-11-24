@@ -9,3 +9,35 @@ end
 def add_or_remove_cash(pet_shop, cash_amount)
   pet_shop[:admin][:total_cash] += cash_amount
 end
+
+def pets_sold(pet_shop)
+  return pet_shop[:admin][:pets_sold]
+end
+
+def increase_pets_sold(pet_shop, sold) #2 from test spec
+  pet_shop[:admin][:pets_sold] += sold
+end
+
+def stock_count(pet_shop)
+  return pet_shop[:pets].count()
+end
+
+def pets_by_breed(pet_shop, breed)
+  pets = []
+  for pet in pet_shop[:pets]
+    if pet[:breed] == breed
+      pets.push(pet)
+    end
+  end
+  return pets
+end
+
+def find_pet_by_name(pet_shop, name)  #test passes Arthur
+  pets = {}
+  for pet in pet_shop[:pets]
+    if pet[:name] == name
+      pets[:name] = name
+    end
+  end
+  return pets
+end
