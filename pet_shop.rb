@@ -14,7 +14,7 @@ def pets_sold(pet_shop)
   return pet_shop[:admin][:pets_sold]
 end
 
-def increase_pets_sold(pet_shop, sold) #2 from test spec
+def increase_pets_sold(pet_shop, sold)
   pet_shop[:admin][:pets_sold] += sold
 end
 
@@ -32,12 +32,30 @@ def pets_by_breed(pet_shop, breed)
   return pets
 end
 
-def find_pet_by_name(pet_shop, name)  #test passes Arthur
-  pets = {}
+def find_pet_by_name(pet_shop, name)
   for pet in pet_shop[:pets]
     if pet[:name] == name
+      pets = {}
       pets[:name] = name
     end
   end
   return pets
+end
+
+def remove_pet_by_name(pet_shop, name)
+  pet_to_remove = find_pet_by_name(pet_shop, name)
+  pet_shop[:pets].delete_if {|item| item = pet_to_remove}
+  # all credit to rubber duck.
+end
+
+def add_pet_to_stock(pet_shop, new_pet)
+  pet_shop[:pets].push(new_pet)
+end
+
+def customer_pet_count(customer)
+  return customer[:pets].count()
+end
+
+def add_pet_to_customer(customer, new_pet)
+  customer[:pets].push(new_pet)
 end
