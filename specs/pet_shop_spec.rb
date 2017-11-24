@@ -77,27 +77,27 @@ class TestPetShop < Minitest::Test
     assert_equal("Camelot of Pets", name)
   end
 
-  # def test_total_cash
-  #   sum = total_cash(@pet_shop)
-  #   assert_equal(1000, sum)
-  # end
+  def test_total_cash
+    sum = total_cash(@pet_shop)
+    assert_equal(1000, sum)
+  end
 
-  # def test_add_or_remove_cash__add
-  #   add_or_remove_cash(@pet_shop,10)
-  #   cash = total_cash(@pet_shop)
-  #   assert_equal(1010, cash)
-  # end
+  def test_add_or_remove_cash__add
+    add_or_remove_cash(@pet_shop,10)
+    cash = total_cash(@pet_shop)
+    assert_equal(1010, cash)
+  end
 
-  # def test_add_or_remove_cash__remove
-  #   add_or_remove_cash(@pet_shop,-10)
-  #   cash = total_cash(@pet_shop)
-  #   assert_equal(990, cash)
-  # end
+  def test_add_or_remove_cash__remove
+    add_or_remove_cash(@pet_shop,-10)
+    cash = total_cash(@pet_shop)
+    assert_equal(990, cash)
+  end
 
-  # def test_pets_sold
-  #   sold = pets_sold(@pet_shop)
-  #   assert_equal(0, sold)
-  # end
+  def test_pets_sold
+    sold = pets_sold(@pet_shop)
+    assert_equal(0, sold)
+  end
 
   # def test_increase_pets_sold
   #   increase_pets_sold(@pet_shop,2)
@@ -111,14 +111,16 @@ class TestPetShop < Minitest::Test
   # end
 
   # def test_all_pets_by_breed__found
-  #   pets = pets_by_breed(@pet_shop, "British Shorthair")
-  #   assert_equal(2, pets.count)
+  #   pets = pets_by_breed(@pet_shop, "British Shorthair") # IF the breed is a British Shorthair...
+  #   assert_equal(2, pets.count) # doing .count so should be an array
   # end
 
   # def test_all_pets_by_breed__not_found
   #   pets = pets_by_breed(@pet_shop, "Dalmation")
   #   assert_equal(0, pets.count)
   # end
+
+# for pet in pet_shop[:pets] could be a useful line for this
 
   # def test_find_pet_by_name__returns_pet
   #   pet = find_pet_by_name(@pet_shop, "Arthur")
