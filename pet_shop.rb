@@ -35,6 +35,7 @@ end
 def find_pet_by_name(pet_shop, name)
   for pet in pet_shop[:pets]
     if pet[:name] == name
+#      p "in find pets by name if"
       pets = {}
       pets[:name] = name
     end
@@ -69,10 +70,19 @@ def customer_can_afford_pet(customer, new_pet)
 end
 
 def sell_pet_to_customer(pet_shop, pet, customer)
-  add_pet_to_customer(customer, pet)
-  pet_shop[:admin][:pets_sold] +=1
-
-  p pet[:price]
-  pet[:price] =+ pet_shop[:admin][:total_cash]
-
+  if pet != nil
+#    if customer_can_afford_pet(customer, pet) == true
+      for each_pet in pet_shop[:pets]
+        if each_pet[:name] == pet[:name]
+          price = each_pet.fetch_values(:price)
+          pet_shop[:admin][:total_cash] += price[0]
+          add_pet_to_customer(customer, pet)
+          pet_shop[:admin][:pets_sold] +=1
+        end
+      end
+    else
+      return
+    end
+#  end
+  # Have to take the money off the customer.
 end
