@@ -71,18 +71,18 @@ end
 
 def sell_pet_to_customer(pet_shop, pet, customer)
   if pet != nil
-#    if customer_can_afford_pet(customer, pet) == true
-      for each_pet in pet_shop[:pets]
-        if each_pet[:name] == pet[:name]
+    for each_pet in pet_shop[:pets]
+      if each_pet[:name] == pet[:name]
+        if customer_can_afford_pet(customer, each_pet)
           price = each_pet.fetch_values(:price)
           pet_shop[:admin][:total_cash] += price[0]
           add_pet_to_customer(customer, pet)
           pet_shop[:admin][:pets_sold] +=1
         end
       end
-    else
-      return
     end
-#  end
+  else
+    return
+  end
   # Have to take the money off the customer.
 end
